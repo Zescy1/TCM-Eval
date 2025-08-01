@@ -5,7 +5,7 @@ from typing import Callable, List, Optional, Union
 from datasets import Dataset, DatasetDict
 
 from opencompass.openicl.icl_evaluator import BaseEvaluator
-
+'''
 from .arc import ARCDataset
 from .ceval import CEvalDataset
 from .cmmlu import CMMLUDataset
@@ -17,7 +17,7 @@ from .piqa import PIQADatasetV2
 from .race import RaceDataset
 from .siqa import SiqaDatasetV3
 from .xiezhi import XiezhiDataset
-
+'''
 
 def get_origin_patterns(option_keys):
     return [tuple(option_keys)]
@@ -206,7 +206,7 @@ class CircularDatasetMeta(type):
 
         setattr(new_cls, 'load', classmethod(load))
         return new_cls
-
+'''
 
 class CircularCEvalDataset(CEvalDataset, metaclass=CircularDatasetMeta):
     dataset_class = CEvalDataset
@@ -291,7 +291,7 @@ class CircularPIQADataset(PIQADatasetV2, metaclass=CircularDatasetMeta):
         circular_pattern = tuple(int(i[-1]) - 1 for i in circular_pattern)
         item['answer'] = 'AB'[circular_pattern['AB'.index(item['answer'])]]
         return item
-
+'''
 
 class CircularEvaluator(BaseEvaluator):
     """This Evaluator assesses datasets post-Circular processing, generating

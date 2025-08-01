@@ -1,0 +1,3 @@
+[submodule "src/rouge-chinese"]
+	path = src/rouge-chinese
+	url = https://github.com/Isaac-JL-Chen/rouge_chinese.git
