@@ -141,4 +141,4 @@ eval = dict(
 )
 
 summarizer = dict(type=SubjectiveSummarizer, function='subjective')
-work_dir = 'outputs/subjective/zhipu'
+work_dir = 'outputs/subjective/'

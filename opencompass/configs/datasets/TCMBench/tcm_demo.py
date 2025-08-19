@@ -1,40 +1,37 @@
 from opencompass.openicl.icl_prompt_template import PromptTemplate
 from opencompass.openicl.icl_retriever import ZeroRetriever
 from opencompass.openicl.icl_inferencer import GenInferencer
-from opencompass.openicl.icl_evaluator import AccEvaluator
-from opencompass.datasets import TCMBenchDataset,  TCMBenchEvaluator_FOUR,TCMBenchEvaluator_CLI
-from opencompass.utils.text_postprocessors import first_capital_postprocess
+from opencompass.datasets import TCMBenchDataset,TCMBenchSinEvaluator,TCMBenchEvaluator_FOUR
 
 tcmbench_reader_cfg = dict(
     input_columns=['problem_input'], output_column='label')
-tcmbench_four_sets=['four']
-
-tcmbench_cli_sets=['cli']
+tcmbench_four_sets=['demo-b']
+tcmbench_multiple_choices_sets = ['demo-a']  
 tcmbench_datasets = []
-for name in  tcmbench_cli_sets:
+
+for name in  tcmbench_multiple_choices_sets:
     tcmbench_infer_cfg = dict(
         prompt_template=dict(
             type=PromptTemplate,
             template=dict(
-                round=[dict(role='HUMAN', prompt='此题为填空题,请用双引号“”输出每个空的答案,只给出答案即可：{problem_input}\n')])),
+                round=[dict(role='HUMAN', prompt='请解答（此题为单选题，请只输出正确选项）：{problem_input}\n')])),
         retriever=dict(type=ZeroRetriever
                        ),  
         inferencer=dict(type=GenInferencer))
 
     tcmbench_eval_cfg = dict(
-        evaluator=dict(type=TCMBenchEvaluator_CLI), pred_role='BOT')
+        evaluator=dict(type=TCMBenchSinEvaluator), pred_role='BOT')
 
     tcmbench_datasets.append(
         dict(
             type=TCMBenchDataset,
-            path='/home/meihan.zhang/opencompass/data/TCMbench/CLOZE',
+            path='/home/opencompass/data/TCMbench/CH/',
             name=name,
             abbr=name,
             setting_name='zero-shot',
             reader_cfg=tcmbench_reader_cfg,
             infer_cfg=tcmbench_infer_cfg.copy(),
             eval_cfg=tcmbench_eval_cfg.copy()))
-
 for name in  tcmbench_four_sets:
     tcmbench_infer_cfg = dict(
         prompt_template=dict(
@@ -51,7 +48,7 @@ for name in  tcmbench_four_sets:
     tcmbench_datasets.append(
         dict(
             type=TCMBenchDataset,
-            path='/home/meihan.zhang/opencompass/data/TCMbench/CLOZE',
+            path='/home/opencompass/data/TCMbench/CLOZE',
             name=name,
             abbr=name,
             setting_name='zero-shot',

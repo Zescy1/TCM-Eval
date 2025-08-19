@@ -9,7 +9,7 @@ from opencompass.summarizers import TCMBenchSummarizer
 tcmbench_reader_cfg = dict(
     input_columns=['problem_input'], output_column='label')
 
-tcmbench_qa_sets = ['struct'] # 开放式QA，有标答
+tcmbench_qa_sets = ['struct'] 
 
 #tcmbench_ie_sets = ['DBMHG', 'CMeEE', 'CMeIE', 'CHIP-CDEE', 'CHIP-CDN', 'CHIP-CTC', 'Doc_parsing', 'IMCS-V2-MRG'] # 判断识别的实体是否一致，用F1评价
 
@@ -22,11 +22,10 @@ for name in tcmbench_qa_sets:
             template=dict(
                 round=[dict(role='HUMAN', prompt='{problem_input}')])),
         retriever=dict(type=ZeroRetriever
-                       ),  # retriver 不起作用，以输入参数为准 (zero-shot / few-shot)
+                       ),  
         inferencer=dict(type=GenInferencer))
 
-    #tcmbench_eval_cfg = dict(
-      # evaluator=dict(type=TCMBenchEvaluator_NLG), pred_role='BOT')
+
     tcmbench_eval_cfg = dict(
         evaluator=dict(
             type=LMEvaluator,
@@ -62,7 +61,7 @@ for name in tcmbench_qa_sets:
         dict(
             #abbr=f'{name}',
             type=TCMBenchDataset,
-            path='/home/meihan.zhang/opencompass/data/TCMbench/STRUCT',#
+            path='/home/opencompass/data/TCMbench/STRUCT',#
             name=name,
             abbr=name,
             setting_name='zero-shot',

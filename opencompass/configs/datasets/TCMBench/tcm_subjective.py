@@ -5,8 +5,8 @@ from opencompass.datasets import TCMBenchDataset, TCMBenchEvaluator_NLG, TCMBenc
 tcmbench_reader_cfg = dict(
     input_columns=['problem_input'], output_column='label')
 
-tcmbench_qa_sets = ['SynDia','Process','Reason','shennong']#,
-tcmbench_cli_sets = ['struct'] 
+tcmbench_qa_sets = ['Open-Com','Pro-Herb','Reason','ShenNong']#,
+tcmbench_cli_sets = ['Struct-Cli'] 
 tcmbench_datasets = []
 tcmbench_struct_cfg = dict(
     input_columns=['problem_input'], output_column=['label'])
@@ -27,7 +27,7 @@ for name in tcmbench_cli_sets:
     tcmbench_datasets.append(
         dict(
             type=TCMBenchDataset,
-            path='/home/meihan.zhang/opencompass/data/TCMbench/STRUCT',
+            path='/home/opencompass/data/TCMbench/STRUCT',
             name=name,
             abbr=name,
             setting_name='zero-shot',
@@ -51,7 +51,7 @@ for name in tcmbench_qa_sets:
     tcmbench_datasets.append(
         dict(
             type=TCMBenchDataset,
-            path='/home/meihan.zhang/opencompass/data/TCMbench/QA/',
+            path='/home/opencompass/data/TCMbench/QA/',
             name=name,
             abbr=name,
             setting_name='zero-shot',

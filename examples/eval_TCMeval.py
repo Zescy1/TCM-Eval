@@ -46,8 +46,6 @@ with read_base():
 
 datasets = tcmbench_datasets1+tcmbench_datasets2+tcmbench_datasets3
 models=biancang+huatuo+zzkj+spark+baichuan+qw+deepseek+gpt+llama+sunsimiao+qibo+mingyi+doubao+zhipu+gemini+claude+zhongjing+bentsao
-work_dir='.../opencompass/outputs/' # define which path you like
-#opencompass examples/eval_TCMeval.py
-#conda activate compass  
-#cd opencompass
+work_dir='/home/opencompass/outputs/' # define which path you like
+
 

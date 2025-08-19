@@ -10,10 +10,11 @@ from tqdm import tqdm
 from .constructions import ChatGPTSchema, ResultsForHumanSchema
 from .utils import extract_answer, read_jsonl, save_jsonl
 # 定义开放式QA数据集
-datasets = ['try','try-b','Process','Reason','shennong','SynDia','struct','four','cli','book',\
-            'work-much','law-much','base-multi','knowledge-multi','law-multi','logic-multi','quanlity-multi','sj-multi','work-multi',\
-                'base-single','knowledge-single','logic-single','sj-single','struct',\
-                   'appear','bones','child','inner','needles','outter','recover','tuina','woman' ]
+datasets =['Open-Com','Pro-Herb','Reason','ShenNong','Struct-Cli',
+           'Four','cli','Book' ,'Licen-MCH','Law-MCH',
+           'Base-CH','Herb-CH','Law-CH','Logic-CH','Licen-CH','Prac-CH','TCM-CH',
+           'Acup-CH','Derm-CH','Gyne-CH','Inter-CH','Orth-CH','Otorh-CH','Pedi-CH','Pehab-CH','Tuina-CH',
+           'Base-TF','Herb-TF','Logic-TF','Prac-TF','demo-a','demo-b']
 
 
 def convert_zero_shot(line, dataset_name):
@@ -79,9 +80,9 @@ def load_dataset_as_result_schema(dataset_name, parent_path):
     print("最终生成的数据长度:", len(processed))  # 调试输出
     return processed
 if __name__ == '__main__':
-    parent_dir = '/home/meihan.zhang/opencompass/data/TCMbench/'
+    parent_dir = '/home/opencompass/data/TCMbench/'
     data_name = 'ChatMed_temp'  # 设置为您的开放式QA数据集名称
-    save_dir = '/home/meihan.zhang/opencompass/experiment_input/zero-shot/'
+    save_dir = '/home/opencompass/experiment_input/zero-shot/'
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
 
