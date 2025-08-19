@@ -22,7 +22,7 @@ We highly recommend using conda to manage your python environment.
 - #### Install OpenCompass from source
   ```bash
     git clone https://anonymous.4open.science/r/TCM-Eval-1512
-    cd opencompass
+    cd TCM-Eval
     pip install -e .
   ```
 
