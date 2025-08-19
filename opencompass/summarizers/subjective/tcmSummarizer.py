@@ -102,12 +102,12 @@ def get_dimension_results(qa_data, fout, fout_flag):
                 avg_score = dimension_totals[dim] / dimension_counts[dim] if dimension_counts[dim] > 0 else 0.0
                 avg_score = round(avg_score, 2)
                 overall_row.append(avg_score)
-            
             overall_row.append(overall_weighted_sum)
             print(f"Writing Overall Row: {overall_row}")  # 调试信息
             writer.writerow(overall_row)
 
 class TCMBenchSummarizer:
+
     def __init__(self, config: dict, judge_type='general') -> None:
         self.config = config
         self.eval_model_cfgs = self.config['eval']['partitioner']['models']
@@ -115,13 +115,11 @@ class TCMBenchSummarizer:
             model_abbr_from_cfg(model) for model in self.eval_model_cfgs
         ]
         self.judge_models = self.config.get('judge_models', None)
-        #   self.judge_type = judge_type
-        #   print(f"Initialized TCMBenchSummarizer with judge_type: {judge_type}")
 
     def summarize(self, time_str):
         for judge_model in self.judge_models:
             judge_abbr = model_abbr_from_cfg(judge_model)
-            output_dir, results_folder = get_outdir(self.config,time_str)
+            output_dir, results_folder = get_outdir(self.config, time_str)
             fout = os.path.join(output_dir, f'tcm_summary_{time_str}.csv')
             fout_flag = 0
             for eval_model_abbr in self.eval_model_abbrs:
@@ -141,16 +139,10 @@ class TCMBenchSummarizer:
                 except json.JSONDecodeError:
                     print(f"Error: JSON decode error - {subdir_path}")
                     continue  # 继续下一个文件而不是返回
-
-                # 打印 prediction 文本以确保读取的是正确的数据
-      #          for idx, entry in enumerate(qa_data.values()):
-       #             print(f"Entry {idx}: Prediction Text: {entry.get('prediction', 'No prediction text')}")
-
                 print(f"Calculating dimension results and saving to: {fout}")
                 get_dimension_results(qa_data, fout, fout_flag)
                 fout_flag = 1  # 设置标志位以避免重复写入表头
                 print(f"Summary saved to {fout}")
-
         return {'TCMbench': {}}
 
 
