@@ -7,5 +7,5 @@ with read_base():
 
 datasets = tcmbench_datasets
 models=spark
-work_dir='/home/opencompass/outputs/' # define which path you like
+work_dir='/home/meihan.zhang/TCM-Eval/outputs/' # define which path you like
 

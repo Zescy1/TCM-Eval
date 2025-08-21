@@ -25,7 +25,7 @@ for name in  tcmbench_multiple_choices_sets:
     tcmbench_datasets.append(
         dict(
             type=TCMBenchDataset,
-            path='/home/opencompass/data/TCMbench/CH/',
+            path='/home/meihan.zhang/TCM-Eval/data/TCMbench',
             name=name,
             abbr=name,
             setting_name='zero-shot',
@@ -48,7 +48,7 @@ for name in  tcmbench_four_sets:
     tcmbench_datasets.append(
         dict(
             type=TCMBenchDataset,
-            path='/home/opencompass/data/TCMbench/CLOZE',
+            path='/home/meihan.zhang/TCM-Eval/data/TCMbench',
             name=name,
             abbr=name,
             setting_name='zero-shot',
