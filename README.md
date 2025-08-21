@@ -41,7 +41,7 @@ You can find more script examples under [examples](./examples) folder.
 # Python scripts
 opencompass examples/eval_TCMeval.py
 
-# You can see opencompass/opencompass/configs/models/TCMmodel to evaluate more models and opencompass/data/TCMbench to see datasets.
+# You can see TCM-Eval/opencompass/configs/models/TCMmodel to evaluate more models and TCM-Eval/data/TCMbench to see datasets.
 ```
 <p align="right"><a href="#top">🔝Back to top</a></p>
 
